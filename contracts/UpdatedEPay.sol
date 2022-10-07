@@ -16,6 +16,10 @@ contract UpdatedEPay {
     return true;
   }
 
+  /**
+    This fuction is used to return message hash
+    and then it can be used to generate a new signature 
+    */
   function _getMessageHash(
     uint256 _value,
     address _from,
@@ -31,6 +35,10 @@ contract UpdatedEPay {
     return messageHash;
   }
 
+  /**
+    This function returns a string with Ethereum prefix
+    and then it can be used to verify the signature
+    */
   function _getMessageHashWithPrefix(
     uint256 _value,
     address _from,
@@ -87,8 +95,8 @@ contract UpdatedEPay {
     uint256 valueInEth = _value * 10**18;
     require(s_addressToSentAmount[_from] >= valueInEth, "Not enough ETH!");
     bool isVerified = _verify(_from, msg.sender, _value, _sig);
-    // require(isVerified, "Verification Error!");
-    if (!isVerified) return false;
+    require(isVerified, "Verification Error!");
+    // if (!isVerified) return false;
     s_addressToSentAmount[_from] -= valueInEth;
     delete s_startingTime[_from][msg.sender];
     (bool callSuccess, ) = payable(msg.sender).call{value: valueInEth}("");
