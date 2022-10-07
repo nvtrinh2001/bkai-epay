@@ -4,25 +4,19 @@ This project is my attempt to create a decentralised payment channel, using Soli
 
 ## How it works
 
-- `**EPay.sol**`
+**1. `EPay.sol`**
 
-Sender A can send ETH to the smart contract, and can withdraw it back to their wallet.
+- Sender A can send ETH to the smart contract, and can withdraw it back to their wallet.
+- Sender A can allow recipient B to withdraw a specific amount of ETH, which has been sent to the smart contract by A.
+- Recipient B then can withdraw ETH, as long as this amount is less than or equal to the allowance.
 
-Sender A can allow recipient B to withdraw a specific amount of ETH, which has been sent to the smart contract by A.
+**2. `UpdatedEPay.sol`**
 
-Recipient B then can withdraw ETH, as long as this amount is less than or equal to the allowance.
-
-- `**UpdatedEPay.sol**`
-
-Sender A can send ETH to the smart contract, and can withdraw it back to their wallet.
-
-Sender A can allow recipient B to withdraw a specific amount of ETH, which has been sent to the smart contract by A.
-
-Sender A only allows recipient B to withdraw within a specific amount of time.
-
-Sender B has to withdraw all the allowance in one go.
-
-Both A and B have to interact with the smart contract by scripts.
+- Sender A can send ETH to the smart contract, and can withdraw it back to their wallet.
+- Sender A can allow recipient B to withdraw a specific amount of ETH, which has been sent to the smart contract by A.
+- Sender A only allows recipient B to withdraw within a specific amount of time.
+- Sender B has to withdraw all the allowance in one go.
+- Both A and B have to interact with the smart contract by scripts.
 
 ## Quick Start
 
